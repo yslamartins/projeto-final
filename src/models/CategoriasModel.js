@@ -1,5 +1,14 @@
 const connection = require('./Connection');
 
+async function insertCategoryModel(name, slug, useMenu) {
+  await connection.query(`
+    INSERT INTO categories (name, slug, use_in_menu)
+    VALUES('${name}', '${slug}', ${useMenu})
+  `);
+
+  return;
+}
+
 async function getAllCategories() {
   const getCategories = await connection.query('SELECT * FROM categories');
 

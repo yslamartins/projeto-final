@@ -6,4 +6,6 @@ const middlewareProducts = require('../middleware/ProductsMiddleware');
 router.get('/products', productsController.getAllProducts);
 router.get('/products/:id', middlewareProducts.middlewareGetProductsById, productsController.getProductById);
 
+router.post('/products', middlewareProducts.middlewareGetAllProducts, productsController.createProduct)
+
 module.exports = router;
