@@ -26,7 +26,7 @@ async function insertCategoryModel(name, slug, useMenu) {
 async function updateCategoryPropertyModel(id, property, newValue) {
   await connection.query(`
     UPDATE categories
-    SET ${property} = ${newValue}
+    SET ${property} = '${newValue}'
     WHERE id = ${id}
   `);
 
@@ -36,7 +36,7 @@ async function updateCategoryPropertyModel(id, property, newValue) {
 async function updateEveryPropertyCategoryModel(id, name, slug, useMenu) {
   await connection.query(`
     UPDATE categories
-    SET name = ${name}, slug = ${slug}, use_in_menu = ${useMenu}
+    SET name = '${name}', slug = '${slug}', use_in_menu = ${useMenu}
     WHERE id = ${id}
   `);
 
