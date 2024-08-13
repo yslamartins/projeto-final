@@ -11,7 +11,13 @@ async function getProductById(req, res) {
     res.send(product);
 }
 
+async function createProduct(req, res) {
+    const product = await productsModel.createProductModel(req.body);
+    res.send(product);
+}
+
 module.exports = {
     getAllProducts,
-    getProductById
+    getProductById,
+    createProduct
 };
