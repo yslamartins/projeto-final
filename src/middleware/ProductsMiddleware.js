@@ -1,16 +1,6 @@
 const productsModel = require('../models/productsModels');
 
-async function middlewareGetAllProducts(req, res, next) {
-  const products = await productsModel.getAllProductsModel();
-  res.send(products);
-
-  if (!products) {
-    return res.status(404).json({ message: 'Produtos não encontrados' });
-  }
-
-  next();
-}
-
+// middleware de busca de um produto pelo id
 async function middlewareGetProductsById(req, res, next) {
   const { id } = req.params;
   const product = await productsModel.getProductsByIdModel(id);
@@ -21,7 +11,7 @@ async function middlewareGetProductsById(req, res, next) {
 
   next();
 }
+
 module.exports = {
-  middlewareGetAllProducts,
   middlewareGetProductsById,
 };
