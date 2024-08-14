@@ -8,15 +8,15 @@ async function getAllCategories(req, res) {
 
 async function getCategoryById(req, res) {
   const { id } = req.params;
-  const Categorias = await CagoriasModel.getCategoryById();
+  const Categorias = await CagoriasModel.getCategoryById(id);
 
   return res.send(Categorias);
 }
 
 async function insertCategoryModel(req, res) {
-  const { name, enable } = req.body;
+  const { name, enabled } = req.body;
 
-  await CategoriasModel.insertCategoryModel(name, enable);
+  await CategoriasModel.insertCategoryModel(name, enabled);
 
   return res.status(201).send('categoria inserido com sucesso');
 }
