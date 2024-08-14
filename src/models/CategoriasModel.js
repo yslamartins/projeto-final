@@ -1,4 +1,4 @@
-const connection = require('./Connection');
+const connection = require('./connection');
 
 async function insertCategoryModel(name, slug, useMenu) {
   await connection.query(`
