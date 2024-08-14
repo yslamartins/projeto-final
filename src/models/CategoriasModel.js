@@ -23,20 +23,27 @@ async function getCategoryById(id) {
 }
 
 async function updateCategoryPropertyModel(id, property, newValue) {
-  let value = typeof newValue == String ? `'${newValue}'` : newValue;
-  await connection.query(`
+  if (property === 'name') {
+    await connection.query(`
     UPDATE categories
-    SET ${property} = ${value}
-    WHERE id = 1
+    SET name = ${newValue}
+    WHERE id = ${id}
   `);
-  return;
-}
+  } else if (property === 'enabled') {
+    await connection.query(`
+    UPDATE categories
+    SET enabled = ${newValue}
+    WHERE id = ${id}`);
+  }
 
-async function updateEveryPropertyCategoryModel(id, name, enable) {
   return;
 }
 
 async function deleteCategoryModel(id) {
+  await connection.query(`
+    DELETE FROM categories
+    WHERE id = ${id}
+  `);
   return;
 }
 
