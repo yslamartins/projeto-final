@@ -1,4 +1,4 @@
-const cagoriasModel = require('../models/categoriasModel');
+const CategoriasModel = require('../models/CategoriasModel');
 
 async function getAllCategories(req, res) {
   const Categorias = await CategoriasModel.getAllCategories();
