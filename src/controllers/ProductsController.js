@@ -1,23 +1,71 @@
-const productsModel = require('../models/productsModels');
+const {
+  createProductModel,
+  getAllProductsModel,
+  getProductsByIdModel,
+  updateProductModel,
+} = require('../models/productsModels');
 
 async function createProduct(req, res) {
-  const product = await productsModel.createProductModel(req.body);
-  res.send(product);
+  try {
+    const product = req.body;
+    const newProduct = await createProductModel(product);
+    res.status(201).json(newProduct);
+  } catch (error) {
+    console.error('Error creating product:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 }
 
 async function getAllProducts(req, res) {
-  const products = await productsModel.getAllProductsModel();
-  res.send(products);
+  try {
+    const products = await getAllProductsModel();
+    res.status(200).json(products);
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 }
 
 async function getProductById(req, res) {
-  const { id } = req.params;
-  const product = await productsModel.getProductsByIdModel(id);
-  res.send(product);
+  try {
+    const id = parseInt(req.params.id, 10);
+    if (isNaN(id)) {
+      return res.status(400).json({ error: 'Invalid product ID' });
+    }
+    const product = await getProductsByIdModel(id);
+    if (product) {
+      res.status(200).json(product);
+    } else {
+      res.status(404).json({ error: 'Product not found' });
+    }
+  } catch (error) {
+    console.error('Error fetching product:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
+
+async function updateProduct(req, res) {
+  try {
+    const id = parseInt(req.params.id, 10);
+    if (isNaN(id)) {
+      return res.status(400).json({ error: 'Invalid product ID' });
+    }
+    const updatedFields = req.body;
+    const updatedProduct = await updateProductModel(id, updatedFields);
+    if (updatedProduct) {
+      res.status(200).json(updatedProduct);
+    } else {
+      res.status(404).json({ error: 'Product not found' });
+    }
+  } catch (error) {
+    console.error('Error updating product:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 }
 
 module.exports = {
   createProduct,
   getAllProducts,
   getProductById,
+  updateProduct,
 };
