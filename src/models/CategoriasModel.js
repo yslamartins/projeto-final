@@ -52,6 +52,5 @@ module.exports = {
   getCategoryById,
   insertCategoryModel,
   updateCategoryPropertyModel,
-  updateEveryPropertyCategoryModel,
   deleteCategoryModel,
 };
