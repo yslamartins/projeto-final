@@ -1,11 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const productsController = require('../controllers/ProductsController');
-const middlewareProducts = require('../middleware/ProductsMiddleware');
+const productsController = require('../controllers/productsController');
 
 router.get('/products', productsController.getAllProducts);
-router.get('/products/:id', middlewareProducts.middlewareGetProductsById, productsController.getProductById);
-
-router.post('/products', middlewareProducts.middlewareGetAllProducts, productsController.createProduct)
+router.get('/products/:id', productsController.getProductById);
+router.post('/products', productsController.createProduct);
+router.put('/products/:id', productsController.updateProduct);
 
 module.exports = router;
