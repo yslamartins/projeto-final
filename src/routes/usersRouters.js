@@ -5,11 +5,11 @@ const usersController = require('../controllers/usersController')
 const usersMiddleware = require('../middleware/usersMiddleware')
 
 router.post("/users",
-    usersMiddleware.insertUserMiddleware, 
+     usersMiddleware.insertUserMiddleware,
      usersController.createUser
 );
 router.get("/users/:id",
-    usersMiddleware.middlewareGetUserById, 
+     usersMiddleware.middlewareGetUserById,
      usersController.getUserById
 );
 router.delete("/users/:id",

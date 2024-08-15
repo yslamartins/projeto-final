@@ -1,7 +1,7 @@
 const {
   createProductModel,
   getAllProductsModel,
-  getProductsByIdModel,
+  getProductByIdModel,
   updateProductModel,
 } = require('../models/productsModels');
 
@@ -32,7 +32,7 @@ async function getProductById(req, res) {
     if (isNaN(id)) {
       return res.status(400).json({ error: 'Invalid product ID' });
     }
-    const product = await getProductsByIdModel(id);
+    const product = await getProductByIdModel(id);
     if (product) {
       res.status(200).json(product);
     } else {
