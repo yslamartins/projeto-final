@@ -1,30 +1,30 @@
 const express = require('express');
 const router = express.Router();
 const CategoriaController = require('../controllers/CategoriasController');
-//esperando o middlewareCategorias//
+const middlewareCategorias = require('../middleware/categoriasMiddleware');
 
 router.get('/categoria', CategoriaController.getAllCategories);
 router.get(
     '/categorias/:id',
-    //esperando o middlewareCategorias//
+    middlewareCategorias.middlewareGetCategoryById,
     CategoriaController.getCategoryById
 )
 
 router.post(
     '/categoria',
-    //esperando o middlewareCategorias//
+    middlewareCategorias.middlewareInsertCategory,
     CategoriaController.insertCategoryModel
 );
 
 router.put(
     '/categoria/:id',
-    //esperando o middlewareCategorias//
+    middlewareCategorias.middlewareUpdateCategory,
     CategoriaController.updateCategoryPropertyModel
 )
 
 router.delete(
     '/categoria/:id',
-    //esperando o middlewareCategorias//
+    middlewareCategorias.middlewareDeleteCategory,
     CategoriaController.deleteCategoryModel
 );
 

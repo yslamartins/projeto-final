@@ -13,7 +13,7 @@ async function getCategoryById(req, res) {
   return res.send(Categorias);
 }
 
-async function insertCategoryModel(req, res) {
+async function insertCategory(req, res) {
   const { name, enabled } = req.body;
 
   await CategoriasModel.insertCategoryModel(name, enabled);
@@ -21,7 +21,7 @@ async function insertCategoryModel(req, res) {
   return res.status(201).send('categoria inserido com sucesso');
 }
 
-async function updateCategoryPropertyModel(req, res) {
+async function updateCategoryProperty(req, res) {
   const { id } = req.params;
   const { name } = req.params;
 
@@ -30,7 +30,7 @@ async function updateCategoryPropertyModel(req, res) {
   return res.send('categorias atualizados com sucesso');
 }
 
-async function deleteCategoryModel(req, res) {
+async function deleteCategory(req, res) {
   const { id } = req.params;
 
   await CategoriasModel.deleteCategoryModel(id);
@@ -41,7 +41,7 @@ async function deleteCategoryModel(req, res) {
 module.exports = {
   getAllCategories,
   getCategoryById,
-  insertCategoryModel,
-  updateCategoryPropertyModel,
-  deleteCategoryModel,
+  insertCategory,
+  updateCategoryProperty,
+  deleteCategory,
 };
