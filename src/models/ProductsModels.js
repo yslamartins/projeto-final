@@ -61,9 +61,18 @@ async function updateProductModel(id, updatedFields) {
   return result.rows[0];
 }
 
+async function deleteProductModel(id) {
+  const result = await connection.query(
+    'DELETE FROM products WHERE id = $1 RETURNING *',
+    [id]
+  );
+  return result.rows[0]; 
+}
+
 module.exports = {
   createProductModel,
   getAllProductsModel,
   getProductByIdModel,
   updateProductModel,
+  deleteProductModel,
 };
