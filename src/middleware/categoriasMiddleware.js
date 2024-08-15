@@ -12,16 +12,21 @@ async function middlewareGetCategoryByI(req,res,next){
 }
 
 async function middlewareInsertCategoryModel(req,res,next) {
-    const { nome} = req.body;
+    const { nome, enabled } = req.body;
     
     
-    if(!nome){
+    if(!nome || enabled){
         return res.status(400).send('Dados da categoria incompletos')
     }
+
+    const categoria = await categoriasModel.get
+
+
+
     next();
 }
 
-const categoria = await categoriasModel.getCategoria
+
 
 
 
@@ -36,5 +41,7 @@ const categoria = await categoriasModel.getCategoria
 
 
 module.exports={
+    middlewareGetCategoryByI,
+    middlewareInsertCategoryModel,
 
 }

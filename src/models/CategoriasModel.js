@@ -1,9 +1,9 @@
 const connection = require('./connection');
 
-async function insertCategoryModel(name, enable) {
+async function insertCategoryModel(name, enabled) {
   await connection.query(`
     INSERT INTO categories (name, enabled)
-    VALUES('${name}', ${enable})
+    VALUES('${name}', ${enabled})
   `);
   return;
 }
