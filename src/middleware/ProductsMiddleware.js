@@ -1,17 +1,22 @@
-const productsModel = require('../models/productsModels');
+const productsModel = require('../models/ProductsModels');
 
-// middleware de busca de um produto pelo id
-async function middlewareGetProductsById(req, res, next) {
-  const { id } = req.params;
-  const product = await productsModel.getProductsByIdModel(id);
-
-  if (!product) {
-    return res.status(404).json({ message: 'Produto não encontrado' });
+function validateId(req, res, next) {
+  const id = parseInt(req.params.id, 10);
+  if (isNaN(id)) {
+    return res.status(400).json({ error: 'Invalid ID' });
   }
+  next();
+}
 
+function validateProduct(req, res, next) {
+  const { name, price, description, stock, categorie_id } = req.body;
+  if (!name || !price || typeof stock !== 'number' || typeof categorie_id !== 'number') {
+    return res.status(400).json({ error: 'Missing or invalid product fields' });
+  }
   next();
 }
 
 module.exports = {
-  middlewareGetProductsById,
-};
+  validateId,
+  validateProduct,
+}

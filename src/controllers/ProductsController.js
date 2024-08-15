@@ -4,7 +4,7 @@ const {
   getProductByIdModel,
   updateProductModel,
   deleteProductModel,
-} = require('../models/productsModels');
+} = require('../models/ProductsModels');
 
 async function createProduct(req, res) {
   try {
