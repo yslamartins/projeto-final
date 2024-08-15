@@ -22,6 +22,13 @@ async function getCategoryById(id) {
   return category.rows[0];
 }
 
+async function getCategoryByName(name) {
+  const category = await connection.query(`
+      SELECT * FROM categories WHERE name = ${name}
+    `);
+  return category.rows[0];
+}
+
 async function updateCategoryPropertyModel(id, property, newValue) {
   if (property === 'name') {
     await connection.query(`
@@ -50,6 +57,7 @@ async function deleteCategoryModel(id) {
 module.exports = {
   getAllCategories,
   getCategoryById,
+  getCategoryByName,
   insertCategoryModel,
   updateCategoryPropertyModel,
   deleteCategoryModel,
