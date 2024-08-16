@@ -34,3 +34,9 @@ CREATE TABLE users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Data de criação
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- Data de atualização
 );
+CREATE TABLE product_image (
+    id SERIAL PRIMARY KEY,
+    product_id INT REFERENCES products(id),
+    content VARCHAR(255),
+    enabled BOOLEAN DEFAULT FALSE
+);
