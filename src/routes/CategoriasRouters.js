@@ -5,27 +5,27 @@ const middlewareCategorias = require('../middleware/categoriasMiddleware');
 
 router.get('/categoria', CategoriaController.getAllCategories);
 router.get(
-    '/categorias/:id',
-    middlewareCategorias.middlewareGetCategoryById,
-    CategoriaController.getCategoryById
-)
+  '/categorias/:id',
+  middlewareCategorias.middlewareGetCategoryById,
+  CategoriaController.getCategoryById,
+);
 
 router.post(
-    '/categoria',
-    middlewareCategorias.middlewareInsertCategory,
-    CategoriaController.insertCategoryModel
+  '/categoria',
+  middlewareCategorias.middlewareInsertCategory,
+  CategoriaController.insertCategory,
 );
 
 router.put(
-    '/categoria/:id',
-    middlewareCategorias.middlewareUpdateCategory,
-    CategoriaController.updateCategoryPropertyModel
-)
+  '/categoria/:id',
+  middlewareCategorias.middlewareUpdateCategory,
+  CategoriaController.updateCategoryPropertyModel,
+);
 
 router.delete(
-    '/categoria/:id',
-    middlewareCategorias.middlewareDeleteCategory,
-    CategoriaController.deleteCategoryModel
+  '/categoria/:id',
+  middlewareCategorias.middlewareDeleteCategory,
+  CategoriaController.deleteCategoryModel,
 );
 
 module.exports = router;
