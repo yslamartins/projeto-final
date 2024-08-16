@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const CategoriaController = require('../controllers/CategoriasController');
+const CategoriaController = require('../controllers/categoriasController');
 const middlewareCategorias = require('../middleware/categoriasMiddleware');
 
 router.get('/categoria', CategoriaController.getAllCategories);
@@ -19,13 +19,13 @@ router.post(
 router.put(
   '/categoria/:id',
   middlewareCategorias.middlewareUpdateCategory,
-  CategoriaController.updateCategoryPropertyModel,
+  CategoriaController.updateCategoryProperty,
 );
 
 router.delete(
   '/categoria/:id',
   middlewareCategorias.middlewareDeleteCategory,
-  CategoriaController.deleteCategoryModel,
+  CategoriaController.deleteCategory,
 );
 
 module.exports = router;
