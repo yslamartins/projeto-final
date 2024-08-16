@@ -30,18 +30,14 @@ async function getCategoryByName(name) {
 }
 
 async function updateCategoryPropertyModel(id, property, newValue) {
-  if (property === 'name') {
-    await connection.query(`
+  await connection.query(
+    `
     UPDATE categories
-    SET name = ${newValue}
-    WHERE id = ${id}
-  `);
-  } else if (property === 'enabled') {
-    await connection.query(`
-    UPDATE categories
-    SET enabled = ${newValue}
-    WHERE id = ${id}`);
-  }
+    SET $1 = $2
+    WHERE id = $3
+  `,
+    [property, newValue, id],
+  );
 
   return;
 }

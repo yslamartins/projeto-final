@@ -1,22 +1,22 @@
-const CategoriasModel = require('../models/CategoriasModel');
+const categoriasModel = require('../models/CategoriasModel');
 
 async function getAllCategories(req, res) {
-  const Categorias = await CategoriasModel.getAllCategories();
+  const categorias = await categoriasModel.getAllCategories();
 
-  return res.send(Categorias);
+  return res.send(categorias);
 }
 
 async function getCategoryById(req, res) {
   const { id } = req.params;
-  const Categorias = await CagoriasModel.getCategoryById(id);
+  const Categorias = await categoriasModel.getCategoryById(id);
 
-  return res.send(Categorias);
+  return res.send(categorias);
 }
 
 async function insertCategory(req, res) {
   const { name, enabled } = req.body;
 
-  await CategoriasModel.insertCategoryModel(name, enabled);
+  await categoriasModel.insertCategoryModel(name, enabled);
 
   return res.status(201).send('categoria inserido com sucesso');
 }
@@ -25,7 +25,7 @@ async function updateCategoryProperty(req, res) {
   const { id } = req.params;
   const { name } = req.params;
 
-  await CategoriasModel.updateCategoryPropertyModel(id, name);
+  await categoriasModel.updateCategoryPropertyModel(id, name);
 
   return res.send('categorias atualizados com sucesso');
 }
@@ -33,7 +33,7 @@ async function updateCategoryProperty(req, res) {
 async function deleteCategory(req, res) {
   const { id } = req.params;
 
-  await CategoriasModel.deleteCategoryModel(id);
+  await categoriasModel.deleteCategoryModel(id);
 
   return res.send('Categorias deletado com sucesso');
 }
