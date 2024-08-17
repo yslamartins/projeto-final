@@ -8,7 +8,7 @@ async function getAllCategories(req, res) {
 
 async function getCategoryById(req, res) {
   const { id } = req.params;
-  const Categorias = await categoriasModel.getCategoryById(id);
+  const categorias = await categoriasModel.getCategoryById(id);
 
   return res.send(categorias);
 }

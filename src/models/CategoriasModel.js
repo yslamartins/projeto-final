@@ -12,7 +12,7 @@ async function getAllCategories() {
   const getCategories = await connection.query(`
       select * from categories
   `);
-  return getCategories.rows[0];
+  return getCategories.rows;
 }
 
 async function getCategoryById(id) {
@@ -24,7 +24,7 @@ async function getCategoryById(id) {
 
 async function getCategoryByName(name) {
   const category = await connection.query(`
-      SELECT * FROM categories WHERE name = ${name}
+      SELECT * FROM categories WHERE name = '${name}'
     `);
   return category.rows[0];
 }
