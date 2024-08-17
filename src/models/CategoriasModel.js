@@ -39,22 +39,22 @@ async function getCategoryByName(name) {
 }
 
 async function updateCategoryModel(id, values) {
-  let str = 'SET ';
+  let str = '';
 
   for (val in values) {
     str +=
       val +
       ' = ' +
-      (typeof values[val] == 'string' ? `'${values[val]}' ` : `${values[val]}`);
+      (typeof values[val] == 'string'
+        ? `'${values[val]}', `
+        : `${values[val]}`);
   }
 
-  await connection.query(
-    `
+  await connection.query(`
     UPDATE categories
     SET ${str}
     WHERE id = ${id}
-  `,
-  );
+  `);
 
   return;
 }

@@ -29,19 +29,23 @@ async function middlewareInsertCategory(req, res, next) {
 
 async function middlewareUpdateCategory(req, res, next) {
   const { id } = req.params;
-  const { property, newValue } = req.body;
-  const categoria = await categoriasModel.getCategoryById(id);
+  const data = req.body;
+  const hasId = await categoriasModel.getCategoryById(id);
 
-  if (!categoria) {
-    return res.status(404).send('Categoria não encontrada');
-  }
+  if (!hasId) return res.status(400).send('Categoria não encontrada');
 
-  if (!property || !newValue) {
-    return res.status(400).send('Dados incompletos');
-  }
+  for (info in data) {
+    if (info !== 'name' && info !== 'enabled') {
+      return res.status(400).send('Campos além do esperado');
+    }
 
-  if (property != 'name' && property != 'enabled') {
-    return res.status(400).send('Propriedade inválida');
+    if (info === 'name' && !data[info]) {
+      return res.status(400).send('Campo vazio');
+    }
+
+    if (info === 'enabled' && typeof data[info] !== 'boolean') {
+      return res.status(400).send('Campo diferente de boolean');
+    }
   }
 
   next();
