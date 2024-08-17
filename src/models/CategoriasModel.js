@@ -1,52 +1,72 @@
 const connection = require('./connection');
 
 async function insertCategoryModel(name, enabled) {
-  await connection.query(`
+  await connection.query(
+    `
     INSERT INTO categories (name, enabled)
-    VALUES('${name}', ${enabled})
-  `);
+    VALUES($1, $2)
+  `,
+    [name, enabled],
+  );
   return;
 }
 
 async function getAllCategories() {
   const getCategories = await connection.query(`
-      select * from categories
+      SELECT * FROM categories
   `);
   return getCategories.rows;
 }
 
 async function getCategoryById(id) {
-  const category = await connection.query(`
-    SELECT * FROM categories WHERE id = ${id}
-  `);
+  const category = await connection.query(
+    `
+    SELECT * FROM categories WHERE id = $1
+  `,
+    [id],
+  );
   return category.rows[0];
 }
 
 async function getCategoryByName(name) {
-  const category = await connection.query(`
-      SELECT * FROM categories WHERE name = '${name}'
-    `);
+  const category = await connection.query(
+    `
+      SELECT * FROM categories WHERE name = $1
+    `,
+    [name],
+  );
   return category.rows[0];
 }
 
-async function updateCategoryPropertyModel(id, property, newValue) {
+async function updateCategoryModel(id, values) {
+  let str = 'SET ';
+
+  for (val in values) {
+    str +=
+      val +
+      ' = ' +
+      (typeof values[val] == 'string' ? `'${values[val]}' ` : `${values[val]}`);
+  }
+
   await connection.query(
     `
     UPDATE categories
-    SET $1 = $2
-    WHERE id = $3
+    SET ${str}
+    WHERE id = ${id}
   `,
-    [property, newValue, id],
   );
 
   return;
 }
 
 async function deleteCategoryModel(id) {
-  await connection.query(`
+  await connection.query(
+    `
     DELETE FROM categories
-    WHERE id = ${id}
-  `);
+    WHERE id = $1
+  `,
+    [id],
+  );
   return;
 }
 
@@ -55,6 +75,6 @@ module.exports = {
   getCategoryById,
   getCategoryByName,
   insertCategoryModel,
-  updateCategoryPropertyModel,
+  updateCategoryModel,
   deleteCategoryModel,
 };

@@ -23,9 +23,9 @@ async function insertCategory(req, res) {
 
 async function updateCategoryProperty(req, res) {
   const { id } = req.params;
-  const { name } = req.params;
+  const values = req.body;
 
-  await categoriasModel.updateCategoryPropertyModel(id, name);
+  await categoriasModel.updateCategoryModel(id, values);
 
   return res.send('categorias atualizados com sucesso');
 }

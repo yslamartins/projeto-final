@@ -7,7 +7,7 @@ router.get('/categories', CategoriaController.getAllCategories);
 router.get(
   '/categories/:id',
   middlewareCategorias.middlewareGetCategoryById,
-  CategoriaController.getAllCategories,
+  CategoriaController.getCategoryById,
 );
 
 router.post(
