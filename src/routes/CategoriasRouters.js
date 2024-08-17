@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const CategoriaController = require('../controllers/categoriasController');
+const CategoriaController = require('../controllers/CategoriasController');
 const middlewareCategorias = require('../middleware/categoriasMiddleware');
 
 router.get('/categoria', CategoriaController.getAllCategories);
 router.get(
   '/categorias/:id',
   middlewareCategorias.middlewareGetCategoryById,
-  CategoriaController.getCategoryById,
+  CategoriaController.getAllCategories,
 );
 
 router.post(

@@ -4,15 +4,22 @@ const encryptPassword = require("../helpers/encryptPass");
 async function createUser(req, res) {
   const { firstname, surname, email, password } = req.body;
 
-  const pass = await encryptPassword(password);
-
   try {
-    await userModel.insertUserModel(firstname, surname, email, pass);
+    const hashedPassword = await encryptPassword(password);
+    await userModel.insertUserModel(firstname, surname, email, hashedPassword);
+    return res.status(201).send("Usuário inserido com sucesso");
   } catch (error) {
     return res.status(400).send("Esse usuário já está cadastrado");
   }
+}
 
-  return res.status(201).send("Usuário inserido com sucesso");
+async function getAllUsers(req, res) {
+  try {
+    const users = await userModel.getAllUsers(); 
+    return res.status(200).json(users);
+  } catch (error) {
+    return res.status(500).send("Erro ao obter usuários");
+  }
 }
 
 async function getUserById(req, res) {
@@ -58,9 +65,7 @@ async function updateUser(req, res) {
     return res.status(400).json({ message: "Nenhum campo para atualizar." });
   }
 
-  const query = `UPDATE users SET ${fields.join(", ")} WHERE id = $${
-    fields.length + 1
-  } RETURNING *`;
+  const query = `UPDATE users SET ${fields.join(", ")} WHERE id = $${fields.length + 1} RETURNING *`;
   values.push(id);
 
   try {
@@ -91,6 +96,7 @@ async function deleteUser(req, res) {
 
 module.exports = {
   createUser,
+  getAllUsers,
   getUserById,
   updateUser,
   deleteUser,

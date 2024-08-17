@@ -1,6 +1,6 @@
 const usersModel = require("../models/usersModel");
 
-async function insertUserMiddleware(req, res, next) {
+async function middlewareInsertUser(req, res, next) {
     const {firstname, surname, email, password} = req.body
 
     if(!firstname || !surname || !email || !password){
@@ -41,7 +41,7 @@ async function middlewareDeleteUser(req, res, next) {
 }
 
 module.exports ={
-    insertUserMiddleware,
+    middlewareInsertUser,
     middlewareGetUserById,
     middlewareDeleteUser
 }
