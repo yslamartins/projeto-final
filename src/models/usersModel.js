@@ -3,14 +3,16 @@ const connection = require('./connection');
 async function insertUserModel(firstname, surname, email, password) {
   await connection.query(`
         INSERT INTO users (firstname, surname, email, password) 
-        VALUES(
-        '${firstname}',
-        '${surname}',
-        '${email}',
-        '${password}'
-        )`);
-  return;
+        VALUES($1, $2, $3, $4)`,
+    [firstname, surname, email, password]
+  );
 }
+
+async function getAllUsers() {
+  const result = await connection.query('SELECT id, firstname, surname, email, password FROM users');
+  return result.rows;
+}
+
 async function getUserByIdModel(id) {
   const result = await connection.query(
     `SELECT id, firstname, surname, email FROM users WHERE id = $1`,
@@ -18,6 +20,7 @@ async function getUserByIdModel(id) {
   );
   return result.rows[0];
 }
+
 async function updateUserByIdModel(id, firstname, surname, email) {
   await connection.query(
     `
@@ -41,6 +44,7 @@ async function deleteUserByIdModel(id) {
 
 module.exports = {
   insertUserModel,
+  getAllUsers,
   getUserByIdModel,
   updateUserByIdModel,
   deleteUserByIdModel,

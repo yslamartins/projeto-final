@@ -2,8 +2,8 @@ const express = require('express');
 const app = express();
 
 const productsRoutes = require('./routes/ProductsRoutes');
-const categoriesRoutes = require('./routes/categoriasRouters');
-// const router_users = require('./routes/usersRouters');
+const categoriesRoutes = require('./routes/CategoriasRouters');
+const router_users = require('./routes/usersRouters');
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -11,6 +11,6 @@ dotenv.config();
 app.use(express.json());
 app.use(productsRoutes);
 app.use(categoriesRoutes);
-// app.use(router_users);
+app.use(router_users);
 
 module.exports = app;
