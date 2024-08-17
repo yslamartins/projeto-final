@@ -51,8 +51,10 @@ async function updateProduct(req, res) {
     if (isNaN(id)) {
       return res.status(400).json({ error: 'Invalid product ID' });
     }
+
     const updatedFields = req.body;
     const updatedProduct = await updateProductModel(id, updatedFields);
+    
     if (updatedProduct) {
       res.status(200).json(updatedProduct);
     } else {

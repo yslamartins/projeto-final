@@ -43,8 +43,10 @@ async function updateProductModel(id, updatedFields) {
   const setClauses = [];
   const values = [];
 
+  setClauses.push(`updated_at = CURRENT_TIMESTAMP`);
+  
   for (const field in updatedFields) {
-    if (updatedFields.hasOwnProperty(field)) {
+    if (updatedFields.hasOwnProperty(field) && field !== 'updated_at') {
       setClauses.push(`${field} = $${values.length + 1}`);
       values.push(updatedFields[field]);
     }
@@ -55,10 +57,16 @@ async function updateProductModel(id, updatedFields) {
     UPDATE products
     SET ${setClauses.join(', ')}
     WHERE id = $${values.length}
-    RETURNING *`;
+    RETURNING *;
+  `;
 
-  const result = await connection.query(query, values);
-  return result.rows[0];
+  try {
+    const result = await connection.query(query, values);
+    return result.rows[0];
+  } catch (error) {
+    console.error('Erro ao atualizar produto:', error);
+    throw error;
+  }
 }
 
 async function deleteProductModel(id) {
