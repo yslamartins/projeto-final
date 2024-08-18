@@ -24,7 +24,7 @@ router.put(
 
 router.delete(
   '/category/:id',
-  CategoriesMiddleware.middlewareDeleteCategory,
+  middlewareCategories.middlewareDeleteCategory,
   CategoryController.deleteCategory,
 );
 
