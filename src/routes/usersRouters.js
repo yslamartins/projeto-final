@@ -1,4 +1,3 @@
-
 /**
  * @openapi
  * components:
@@ -152,14 +151,16 @@ router.get(
   usersController.getUserById,
 );
 
-router.put("/users/:id",
-     usersMiddleware.middlewareInsertUser,
-     usersController.updateUser
+router.put(
+  '/users/:id',
+  usersMiddleware.middlewareUpdateUser,
+  usersController.updateUser,
 );
 
-router.delete("/users/:id",
-     usersMiddleware.middlewareDeleteUser,
-     usersController.deleteUser
+router.delete(
+  '/users/:id',
+  usersMiddleware.middlewareDeleteUser,
+  usersController.deleteUser,
 );
 
 module.exports = router;

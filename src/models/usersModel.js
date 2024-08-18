@@ -1,4 +1,5 @@
 const connection = require('./connection');
+const encryptPassword = require('../helpers/encryptPass');
 
 async function insertUserModel(firstname, surname, email, password) {
   await connection.query(
@@ -32,15 +33,27 @@ async function getUserByEmailModel(email) {
   return result.rows[0];
 }
 
-async function updateUserByIdModel(id, firstname, surname, email) {
-  await connection.query(
-    `
-        UPDATE users
-        SET firstname = $1, surname = $2, email = $3
-        WHERE id = $4
-    `,
-    [firstname, surname, email, id],
-  );
+async function updateUserByIdModel(id, values) {
+  let str = '';
+
+  values.updated_at = new Date().toISOString();
+
+  for (let val in values) {
+    str +=
+      val +
+      ' = ' +
+      (typeof values[val] === 'string'
+        ? `'${values[val]}', `
+        : `${values[val]}, `);
+  }
+
+  str = str.slice(0, -2);
+
+  await connection.query(`
+    UPDATE users
+    SET ${str}
+    WHERE id = ${id}
+  `);
 
   return;
 }
