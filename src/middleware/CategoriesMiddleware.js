@@ -1,10 +1,10 @@
-const categoriasModel = require('../models/CategoriasModel');
+const categoriasModel = require('../models/CategoryModel');
 
 async function middlewareGetCategoryById(req, res, next) {
   const { id } = req.params;
-  const categoria = await categoriasModel.getCategoryById(id);
+  const category = await categoryModel.getCategoryById(id);
 
-  if (!categoria) {
+  if (!categry) {
     return res.status(404).send('Categoria não encontrado');
   }
 
