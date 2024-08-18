@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 
 const productsRoutes = require('./routes/ProductsRoutes');
-const categoriesRoutes = require('./routes/CategoriasRouters');
+const categoriesRoutes = require('./routes/CategoriesRouters');
 const router_users = require('./routes/usersRouters');
 
 const dotenv = require('dotenv');
