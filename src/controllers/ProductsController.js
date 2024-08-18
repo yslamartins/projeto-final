@@ -12,8 +12,8 @@ async function createProduct(req, res) {
     const newProduct = await createProductModel(product);
     res.status(201).json(newProduct);
   } catch (error) {
-    console.error('Error creating product:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
+    console.error('Erro ao criar o produto:', error);
+    res.status(500).json({ error: 'Erro interno do servidor' });
   }
 }
 
@@ -22,8 +22,8 @@ async function getAllProducts(req, res) {
     const products = await getAllProductsModel();
     res.status(200).json(products);
   } catch (error) {
-    console.error('Error fetching products:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
+    console.error('Erro ao buscar produtos:', error);
+    res.status(500).json({ error: 'Erro interno do servidor' });
   }
 }
 
@@ -31,17 +31,17 @@ async function getProductById(req, res) {
   try {
     const id = parseInt(req.params.id, 10);
     if (isNaN(id)) {
-      return res.status(400).json({ error: 'Invalid product ID' });
+      return res.status(400).json({ error: 'ID do produto inválido' });
     }
     const product = await getProductByIdModel(id);
     if (product) {
       res.status(200).json(product);
     } else {
-      res.status(404).json({ error: 'Product not found' });
+      res.status(404).json({ error: 'Produto não encontrado' });
     }
   } catch (error) {
-    console.error('Error fetching product:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
+    console.error('Erro ao buscar produto:', error);
+    res.status(500).json({ error: 'Erro interno do servidor' });
   }
 }
 
@@ -49,7 +49,7 @@ async function updateProduct(req, res) {
   try {
     const id = parseInt(req.params.id, 10);
     if (isNaN(id)) {
-      return res.status(400).json({ error: 'Invalid product ID' });
+      return res.status(400).json({ error: 'ID do produto inválido' });
     }
 
     const updatedFields = req.body;
@@ -58,11 +58,11 @@ async function updateProduct(req, res) {
     if (updatedProduct) {
       res.status(200).json(updatedProduct);
     } else {
-      res.status(404).json({ error: 'Product not found' });
+      res.status(404).json({ error: 'Produto não encontrado' });
     }
   } catch (error) {
-    console.error('Error updating product:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
+    console.error('Erro ao atualizar produto:', error);
+    res.status(500).json({ error: 'Erro interno do servidor' });
   }
 }
 
@@ -70,17 +70,17 @@ async function deleteProduct(req, res) {
   try {
     const id = parseInt(req.params.id, 10);
     if (isNaN(id)) {
-      return res.status(400).json({ error: 'Invalid product ID' });
+      return res.status(400).json({ error: 'ID do produto inválido' });
     }
     const result = await deleteProductModel(id);
     if (result) {
-      res.status(200).json({ message: 'Product deleted successfully' });
+      res.status(200).json({ message: 'Produto excluído com sucesso' });
     } else {
-      res.status(404).json({ error: 'Product not found' });
+      res.status(404).json({ error: 'Produto não encontrado' });
     }
   } catch (error) {
-    console.error('Error deleting product:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
+    console.error('Erro ao excluir produto:', error);
+    res.status(500).json({ error: 'Erro interno do servidor' });
   }
 }
 

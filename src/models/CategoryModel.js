@@ -41,14 +41,18 @@ async function getCategoryByName(name) {
 async function updateCategoryModel(id, values) {
   let str = '';
 
-  for (val in values) {
+  values.updated_at = new Date().toISOString();
+
+  for (let val in values) {
     str +=
       val +
       ' = ' +
-      (typeof values[val] == 'string'
+      (typeof values[val] === 'string'
         ? `'${values[val]}', `
-        : `${values[val]}`);
+        : `${values[val]}, `);
   }
+
+  str = str.slice(0, -2);
 
   await connection.query(`
     UPDATE categories
@@ -58,6 +62,7 @@ async function updateCategoryModel(id, values) {
 
   return;
 }
+
 
 async function deleteCategoryModel(id) {
   await connection.query(
