@@ -63,7 +63,6 @@ async function updateCategoryModel(id, values) {
   return;
 }
 
-
 async function deleteCategoryModel(id) {
   await connection.query(
     `

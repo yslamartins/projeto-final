@@ -28,6 +28,34 @@ async function middlewareGetUserById(req, res, next) {
   next();
 }
 
+async function middlewareUpdateUser(req, res, next) {
+  const { id } = req.params;
+  const data = req.body;
+  const hasUser = usersModel.getUserByIdModel(id);
+
+  if (!hasUser) return res.status(400).send('User não encontrado');
+
+  for (info in data) {
+    if (!data[info]) {
+      return res.status(400).send('Preencha todos os campos');
+    }
+
+    if (info === 'password' && data[info].length < 6) {
+      return res.status(400).send('Senha menor que 6 digitos');
+    }
+
+    if (info === 'email' && !data[info].includes('@')) {
+      return res.status(400).send('Email inválido');
+    }
+
+    if (info === 'email' && !data[info].includes('.com')) {
+      return res.status(400).send('Email inválido');
+    }
+  }
+
+  next();
+}
+
 async function middlewareDeleteUser(req, res, next) {
   const { id } = req.params;
 
@@ -47,5 +75,6 @@ async function middlewareDeleteUser(req, res, next) {
 module.exports = {
   middlewareInsertUser,
   middlewareGetUserById,
+  middlewareUpdateUser,
   middlewareDeleteUser,
 };

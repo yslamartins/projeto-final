@@ -18,8 +18,8 @@ router.get(
   usersController.getUserById,
 );
 router.put(
-  'users/:id',
-  usersMiddleware.middlewareInsertUser,
+  '/users/:id',
+  usersMiddleware.middlewareUpdateUser,
   usersController.updateUser,
 );
 router.delete(
