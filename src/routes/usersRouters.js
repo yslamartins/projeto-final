@@ -1,3 +1,4 @@
+
 /**
  * @openapi
  * components:
@@ -131,22 +132,24 @@
  *         description: Usuário não encontrado
  */
 
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 
 const usersController = require('../controllers/usersController');
 const usersMiddleware = require('../middleware/usersMiddleware');
 
-router.post("/users",
-     usersMiddleware.middlewareInsertUser,
-     usersController.createUser
+router.post(
+  '/users',
+  usersMiddleware.middlewareInsertUser,
+  usersController.createUser,
 );
 
-router.get("/users", usersController.getAllUsers);
+router.get('/users', usersController.getAllUsers);
 
-router.get("/users/:id",
-     usersMiddleware.middlewareGetUserById,
-     usersController.getUserById
+router.get(
+  '/users/:id',
+  usersMiddleware.middlewareGetUserById,
+  usersController.getUserById,
 );
 
 router.put("/users/:id",
