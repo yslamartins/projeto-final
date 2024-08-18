@@ -1,10 +1,10 @@
-const categoriasModel = require('../models/CategoryModel');
+const categoryModel = require('../models/CategoryModel');
 
 async function middlewareGetCategoryById(req, res, next) {
   const { id } = req.params;
   const category = await categoryModel.getCategoryById(id);
 
-  if (!categry) {
+  if (!category) {
     return res.status(404).send('Categoria não encontrado');
   }
 
@@ -18,9 +18,9 @@ async function middlewareInsertCategory(req, res, next) {
     return res.status(400).send('Dados da categoria incompletos');
   }
 
-  const categoria = await categoriasModel.getCategoryByName(name);
+  const category = await categoryModel.getCategoryByName(name);
 
-  if (categoria) {
+  if (category) {
     return res.status(400).send('Categoria já cadastro');
   }
 
@@ -30,7 +30,7 @@ async function middlewareInsertCategory(req, res, next) {
 async function middlewareUpdateCategory(req, res, next) {
   const { id } = req.params;
   const data = req.body;
-  const hasId = await categoriasModel.getCategoryById(id);
+  const hasId = await categoryModel.getCategoryById(id);
 
   if (!hasId) return res.status(400).send('Categoria não encontrada');
 
@@ -58,9 +58,9 @@ async function middlewareDeleteCategory(req, res, next) {
     return res.status(400).send('Dados incompletos');
   }
 
-  const categoria = await categoriasModel.getCategoryById(id);
+  const category = await categoryModel.getCategoryById(id);
 
-  if (!categoria) {
+  if (!category) {
     return res.status(404).send('Categoria não encontrado');
   }
   next();
