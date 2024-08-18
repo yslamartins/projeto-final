@@ -1,4 +1,5 @@
 const connection = require('./connection');
+const encryptPassword = require('../helpers/encryptPass');
 
 async function insertUserModel(firstname, surname, email, password) {
   await connection.query(
@@ -34,7 +35,6 @@ async function getUserByEmailModel(email) {
 
 async function updateUserByIdModel(id, values) {
   let str = '';
-  const hashedPassword = await encryptPassword.encryptPassword(password);
 
   values.updated_at = new Date().toISOString();
 
@@ -50,7 +50,7 @@ async function updateUserByIdModel(id, values) {
   str = str.slice(0, -2);
 
   await connection.query(`
-    UPDATE categories
+    UPDATE users
     SET ${str}
     WHERE id = ${id}
   `);

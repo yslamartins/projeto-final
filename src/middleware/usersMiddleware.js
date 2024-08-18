@@ -40,8 +40,8 @@ async function middlewareUpdateUser(req, res, next) {
       return res.status(400).send('Preencha todos os campos');
     }
 
-    if (info === 'password' && data[info].length < 6) {
-      return res.status(400).send('Senha menor que 6 digitos');
+    if (info === 'password') {
+      return res.status(400).send('Vá para a rota de trocar senhas');
     }
 
     if (info === 'email' && !data[info].includes('@')) {
