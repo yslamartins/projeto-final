@@ -3,7 +3,7 @@ const app = express();
 const { swaggerUi, swaggerSpec } = require('../swagger');
 
 const productsRoutes = require('./routes/ProductsRoutes');
-const categoriesRoutes = require('./routes/CategoriesRouters');
+const categoriesRoutes = require('./routes/categoriesRouters');
 const router_users = require('./routes/usersRouters');
 const loginRouter = require('./routes/loginRouter');
 
