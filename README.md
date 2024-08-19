@@ -2,7 +2,7 @@
 
 # Tech Products E-commerce APIREST
 
-Este repositório contém a API para um e-commerce voltado para a venda de produtos de tecnologia. A API foi desenvolvida utilizando Node.js, Express, PostgreSQL.
+Este repositório contém a API para um e-commerce voltado para a venda de produtos de tecnologia. A API foi desenvolvida utilizando Node.js, Express E PostgreSQL.
 
 ## Índice
 
