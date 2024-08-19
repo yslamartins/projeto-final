@@ -25,8 +25,9 @@ async function middlewareInsertUser(req, res, next) {
 }
 async function middlewareGetUserById(req, res, next) {
   const { id } = req.params;
+  const hasUser = await usersModel.getUserByIdModel(id);
 
-  if (!id) {
+  if (!hasUser) {
     return res.status(404).send('Dados inválidos');
   }
 
