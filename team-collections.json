@@ -1,0 +1,326 @@
+[
+  {
+    "v": 2,
+    "name": "api",
+    "folders": [],
+    "requests": [
+      {
+        "v": "6",
+        "auth": { "authType": "inherit", "authActive": true },
+        "body": { "body": null, "contentType": null },
+        "name": "GET CATEGORIAS",
+        "method": "GET",
+        "params": [],
+        "headers": [],
+        "endpoint": "http://localhost:3000/category",
+        "testScript": "",
+        "preRequestScript": "",
+        "requestVariables": []
+      },
+      {
+        "v": "6",
+        "auth": { "authType": "inherit", "authActive": true },
+        "body": {
+          "body": "{\n  \"name\": \"aaaaaaaaaaaaaaaaa\",\n  \"enabled\": false\n}",
+          "contentType": "application/json"
+        },
+        "name": "POST CATEGORIA",
+        "method": "POST",
+        "params": [],
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImVtYWlsIjoiemVjYUBhZG1pbi5jb20iLCJpYXQiOjE3MjQwODM5NzksImV4cCI6MTcyNDEwMTk3OX0.-xUCS8QdUCPqYUZeWwLgRJVDK_P_3nqry6kJhzYZk4U",
+            "active": true
+          }
+        ],
+        "endpoint": "http://localhost:3000/category",
+        "testScript": "",
+        "preRequestScript": "",
+        "requestVariables": []
+      },
+      {
+        "v": "6",
+        "auth": { "authType": "inherit", "authActive": true },
+        "body": { "body": null, "contentType": null },
+        "name": "GET BY ID CATEGORIAS",
+        "method": "GET",
+        "params": [],
+        "headers": [],
+        "endpoint": "http://localhost:3000/category/2",
+        "testScript": "",
+        "preRequestScript": "",
+        "requestVariables": []
+      },
+      {
+        "v": "6",
+        "auth": { "authType": "inherit", "authActive": true },
+        "body": {
+          "body": "{\n  \"name\": \"Games e consoles\",\n  \"enabled\": true\n}",
+          "contentType": "application/json"
+        },
+        "name": "PUT CATEGORIAS",
+        "method": "PUT",
+        "params": [],
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImVtYWlsIjoiemVjYUBhZG1pbi5jb20iLCJpYXQiOjE3MjQwNjk2NjQsImV4cCI6MTcyNDA4NzY2NH0.Ix1doVV1fK9Sj2tQI_smmN_ztAj60KaA3N38x7y6xZk",
+            "active": true
+          }
+        ],
+        "endpoint": "http://localhost:3000/category/20",
+        "testScript": "",
+        "preRequestScript": "",
+        "requestVariables": []
+      },
+      {
+        "v": "6",
+        "auth": { "authType": "inherit", "authActive": true },
+        "body": {
+          "body": "{\n  \"property\": \"enabled\",\n  \"newValue\": false\n}",
+          "contentType": "application/json"
+        },
+        "name": "DELETE CATEGORIAS",
+        "method": "DELETE",
+        "params": [],
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImVtYWlsIjoiemVjYUBhZG1pbi5jb20iLCJpYXQiOjE3MjQwODM5NzksImV4cCI6MTcyNDEwMTk3OX0.-xUCS8QdUCPqYUZeWwLgRJVDK_P_3nqry6kJhzYZk4U",
+            "active": true
+          }
+        ],
+        "endpoint": "http://localhost:3000/category/23",
+        "testScript": "",
+        "preRequestScript": "",
+        "requestVariables": []
+      }
+    ],
+    "auth": { "authType": "inherit", "authActive": true },
+    "headers": []
+  },
+  {
+    "v": 2,
+    "name": "API USERS",
+    "folders": [],
+    "requests": [
+      {
+        "v": "6",
+        "auth": { "authType": "inherit", "authActive": true },
+        "body": { "body": null, "contentType": null },
+        "name": "GET USERS",
+        "method": "GET",
+        "params": [],
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjcsImVtYWlsIjoiZXplcXVpYXNAYWRtaW4uY29tIiwiaWF0IjoxNzI0MDg3NjAyLCJleHAiOjE3MjQxMDU2MDJ9.LF2Ej9_iUlF-gr2uYwIdePm9MhfAqOaUicEX0rnHuk8",
+            "active": true
+          }
+        ],
+        "endpoint": "http://localhost:3000/users/",
+        "testScript": "",
+        "preRequestScript": "",
+        "requestVariables": []
+      },
+      {
+        "v": "6",
+        "auth": { "authType": "inherit", "authActive": true },
+        "body": {
+          "body": "{\n  \"firstname\": \"Ezequias\",\n  \"surname\": \"Bernardo\",\n  \"email\": \"ezequias@admin.com\",\n  \"password\": \"123456789\"\n}",
+          "contentType": "application/json"
+        },
+        "name": "POST USERS",
+        "method": "POST",
+        "params": [],
+        "headers": [],
+        "endpoint": "http://localhost:3000/users/",
+        "testScript": "",
+        "preRequestScript": "",
+        "requestVariables": []
+      },
+      {
+        "v": "6",
+        "auth": { "authType": "inherit", "authActive": true },
+        "body": {
+          "body": "{\n  \"email\": \"zeca@admin.com\"\n}",
+          "contentType": "application/json"
+        },
+        "name": "PUT USERS",
+        "method": "PUT",
+        "params": [],
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjcsImVtYWlsIjoiZXplcXVpYXNAYWRtaW4uY29tIiwiaWF0IjoxNzI0MDg3NjAyLCJleHAiOjE3MjQxMDU2MDJ9.LF2Ej9_iUlF-gr2uYwIdePm9MhfAqOaUicEX0rnHuk8",
+            "active": true
+          }
+        ],
+        "endpoint": "http://localhost:3000/users/27",
+        "testScript": "",
+        "preRequestScript": "",
+        "requestVariables": []
+      },
+      {
+        "v": "6",
+        "auth": { "authType": "inherit", "authActive": true },
+        "body": {
+          "body": "{\n  \"firstname\": \"Rodrigo\",\n  \"surname\": \"Faro\",\n  \"email\": \"email@admin.com\"\n}",
+          "contentType": null
+        },
+        "name": "DELETE USERS",
+        "method": "DELETE",
+        "params": [],
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImVtYWlsIjoiemVjYUBhZG1pbi5jb20iLCJpYXQiOjE3MjQwODYyMTgsImV4cCI6MTcyNDEwNDIxOH0.R2bSKSgh0bJQe0h2xTvh0TRlJIBdOHdeqkfPlr12McY",
+            "active": true
+          }
+        ],
+        "endpoint": "http://localhost:3000/users/26",
+        "testScript": "",
+        "preRequestScript": "",
+        "requestVariables": []
+      },
+      {
+        "v": "6",
+        "auth": { "authType": "inherit", "authActive": true },
+        "body": {
+          "body": "{\n  \"password\": \"123456789\"\n}",
+          "contentType": "application/json"
+        },
+        "name": "PUT USERS PASSWORD",
+        "method": "PUT",
+        "params": [],
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjcsImVtYWlsIjoiZXplcXVpYXNAYWRtaW4uY29tIiwiaWF0IjoxNzI0MDg3NjAyLCJleHAiOjE3MjQxMDU2MDJ9.LF2Ej9_iUlF-gr2uYwIdePm9MhfAqOaUicEX0rnHuk8",
+            "active": true
+          }
+        ],
+        "endpoint": "http://localhost:3000/users/password/27",
+        "testScript": "",
+        "preRequestScript": "",
+        "requestVariables": []
+      }
+    ],
+    "auth": { "authType": "inherit", "authActive": true },
+    "headers": []
+  },
+  {
+    "v": 2,
+    "name": "API PRODUTOS",
+    "folders": [],
+    "requests": [
+      {
+        "v": "6",
+        "auth": { "authType": "inherit", "authActive": true },
+        "body": {
+          "body": "{\n  \"property\": \"enabled\",\n  \"newValue\": false\n}",
+          "contentType": "application/json"
+        },
+        "name": "GET PRODUTOS",
+        "method": "GET",
+        "params": [],
+        "headers": [],
+        "endpoint": "http://localhost:3000/products",
+        "testScript": "",
+        "preRequestScript": "",
+        "requestVariables": []
+      },
+      {
+        "v": "6",
+        "auth": { "authType": "inherit", "authActive": true },
+        "body": { "body": "{\n}", "contentType": null },
+        "name": "DELETE PRODUTOS",
+        "method": "DELETE",
+        "params": [],
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjcsImVtYWlsIjoiZXplcXVpYXNAYWRtaW4uY29tIiwiaWF0IjoxNzI0MDg3NjAyLCJleHAiOjE3MjQxMDU2MDJ9.LF2Ej9_iUlF-gr2uYwIdePm9MhfAqOaUicEX0rnHuk8",
+            "active": true
+          }
+        ],
+        "endpoint": "http://localhost:3000/products/18",
+        "testScript": "",
+        "preRequestScript": "",
+        "requestVariables": []
+      },
+      {
+        "v": "6",
+        "auth": { "authType": "inherit", "authActive": true },
+        "body": {
+          "body": "\n{\n  \"name\": \"Playstation 5\",\n  \"price\": 3400,\n  \"discount_percentage\": 10,\n  \"description\": \"este é um teste\",\n  \"stock\": 5,\n  \"category_name\": \"Games e consoles\",\n  \"images\": [\n    {\n      \"content\": \"https://i.zst.com.br/thumbs/12/1d/b/-1202927867.jpg\",\n      \"enabled\": true\n    },\n    {\n      \"content\": \"https://i.zst.com.br/thumbs/12/33/32/1246002474.jpg\",\n      \"enabled\": true\n    }\n  ],\n  \"enabled\": true\n}",
+          "contentType": "application/json"
+        },
+        "name": "POST PRODUTOS",
+        "method": "POST",
+        "params": [],
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjcsImVtYWlsIjoiZXplcXVpYXNAYWRtaW4uY29tIiwiaWF0IjoxNzI0MDg3NjAyLCJleHAiOjE3MjQxMDU2MDJ9.LF2Ej9_iUlF-gr2uYwIdePm9MhfAqOaUicEX0rnHuk8",
+            "active": true
+          }
+        ],
+        "endpoint": "http://localhost:3000/products",
+        "testScript": "",
+        "preRequestScript": "",
+        "requestVariables": []
+      },
+      {
+        "v": "6",
+        "auth": { "authType": "inherit", "authActive": true },
+        "body": {
+          "body": "{\n \"price\": 3800\n}",
+          "contentType": "application/json"
+        },
+        "name": "PUT PRODUTOS",
+        "method": "PUT",
+        "params": [],
+        "headers": [
+          {
+            "key": "Authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjcsImVtYWlsIjoiZXplcXVpYXNAYWRtaW4uY29tIiwiaWF0IjoxNzI0MDg3NjAyLCJleHAiOjE3MjQxMDU2MDJ9.LF2Ej9_iUlF-gr2uYwIdePm9MhfAqOaUicEX0rnHuk8",
+            "active": true
+          }
+        ],
+        "endpoint": "http://localhost:3000/products/19",
+        "testScript": "",
+        "preRequestScript": "",
+        "requestVariables": []
+      }
+    ],
+    "auth": { "authType": "inherit", "authActive": true },
+    "headers": []
+  },
+  {
+    "v": 2,
+    "name": "API LOGIN",
+    "folders": [],
+    "requests": [
+      {
+        "v": "6",
+        "auth": { "authType": "inherit", "authActive": true },
+        "body": {
+          "body": "{\n  \"email\": \"ezequias@admin.com\",\n  \"password\": \"123456789\"\n}",
+          "contentType": "application/json"
+        },
+        "name": "LOGIN",
+        "method": "POST",
+        "params": [],
+        "headers": [],
+        "endpoint": "http://localhost:3000/login",
+        "testScript": "",
+        "preRequestScript": "",
+        "requestVariables": []
+      }
+    ],
+    "auth": { "authType": "inherit", "authActive": true },
+    "headers": []
+  }
+]
