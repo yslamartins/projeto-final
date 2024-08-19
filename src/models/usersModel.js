@@ -57,6 +57,16 @@ async function updateUserByIdModel(id, values) {
 
   return;
 }
+
+async function updateUserPasswordModel(id, password) {
+  await connection.query(`
+    UPDATE users
+    SET password = '${password}'
+    WHERE id = ${id}  
+  `);
+  return;
+}
+
 async function deleteUserByIdModel(id) {
   await connection.query(
     `
@@ -72,5 +82,6 @@ module.exports = {
   getUserByIdModel,
   getUserByEmailModel,
   updateUserByIdModel,
+  updateUserPasswordModel,
   deleteUserByIdModel,
 };

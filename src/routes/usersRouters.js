@@ -157,6 +157,12 @@ router.put(
   usersController.updateUser,
 );
 
+router.put(
+  '/users/password/:id',
+  usersMiddleware.middlewareUpdatePassword,
+  usersController.updatePassword,
+);
+
 router.delete(
   '/users/:id',
   usersMiddleware.middlewareDeleteUser,

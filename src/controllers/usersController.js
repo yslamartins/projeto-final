@@ -37,16 +37,25 @@ async function updateUser(req, res) {
   return res.status(201).send('Usuário inserido com sucesso');
 }
 
+async function updatePassword(req, res) {
+  const { id } = req.params;
+  const { password } = req.body;
+
+  const hashedPassword = await encryptPassword.encryptPassword(password);
+  await userModel.updateUserPasswordModel(id, hashedPassword);
+
+  return res.status(200).send('Senha atualizada com sucesso');
+}
+
 async function deleteUser(req, res) {
   const { id } = req.params;
 
   try {
     await userModel.deleteUserByIdModel(id);
-    res.send('Usuário deletado com sucesso');
+    res.status(200).send('Usuário deletado com sucesso');
   } catch (error) {
     res.status(500).send('Erro ao deletar usuário');
   }
-  return res.status(200).send('Usuário deletado com sucesso');
 }
 
 module.exports = {
@@ -54,5 +63,6 @@ module.exports = {
   getAllUsers,
   getUserById,
   updateUser,
+  updatePassword,
   deleteUser,
 };

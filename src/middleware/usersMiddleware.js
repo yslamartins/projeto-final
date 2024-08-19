@@ -31,7 +31,7 @@ async function middlewareGetUserById(req, res, next) {
 async function middlewareUpdateUser(req, res, next) {
   const { id } = req.params;
   const data = req.body;
-  const hasUser = usersModel.getUserByIdModel(id);
+  const hasUser = await usersModel.getUserByIdModel(id);
 
   if (!hasUser) return res.status(400).send('User não encontrado');
 
@@ -56,8 +56,26 @@ async function middlewareUpdateUser(req, res, next) {
   next();
 }
 
+async function middlewareUpdatePassword(req, res, next) {
+  const { id } = req.params;
+  const { password } = req.body;
+
+  const hasUser = await usersModel.getUserByIdModel(id);
+
+  if (!hasUser) return res.status(400).send('User não encontrado');
+
+  if (password.length < 6) {
+    return res.status(400).send('Senha menor que 6 digitos');
+  }
+
+  next();
+}
+
 async function middlewareDeleteUser(req, res, next) {
   const { id } = req.params;
+  const hasUser = await usersModel.getUserByIdModel(id);
+
+  if (!hasUser) return res.status(400).send('User não encontrado');
 
   if (!id) {
     return res.status(400).send('Dados incompletos');
@@ -76,5 +94,6 @@ module.exports = {
   middlewareInsertUser,
   middlewareGetUserById,
   middlewareUpdateUser,
+  middlewareUpdatePassword,
   middlewareDeleteUser,
 };
