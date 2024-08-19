@@ -1,129 +1,146 @@
 /**
- * @openapi
+ * @swagger
  * components:
  *   schemas:
  *     Product:
  *       type: object
  *       properties:
- *         id:
- *           type: integer
- *           example: 1
  *         name:
  *           type: string
- *           example: "Produto Exemplo"
+ *           description: Nome do produto
  *         price:
  *           type: number
  *           format: float
- *           example: 29.99
+ *           description: Preço do produto
  *         discount_percentage:
  *           type: number
  *           format: float
- *           example: 10
- *         enabled:
- *           type: boolean
- *           example: true
+ *           description: Porcentagem de desconto do produto
  *         description:
  *           type: string
- *           example: "Descrição do produto exemplo"
- *         categorie_id:
- *           type: integer
- *           example: 2
+ *           description: Descrição do produto
  *         stock:
  *           type: integer
- *           example: 100
- *         created_at:
+ *           description: Quantidade em estoque do produto
+ *         category_name:
  *           type: string
- *           format: date-time
- *           example: "2024-08-18T00:00:00Z"
- *         updated_at:
+ *           description: Nome da categoria associada ao produto
+ *         images:
+ *           type: array
+ *           items:
+ *             $ref: '#/components/schemas/ProductImage'
+ *           description: Lista de imagens associadas ao produto
+ *         enabled:
+ *           type: boolean
+ *           description: Indica se o produto está habilitado
+ *     ProductImage:
+ *       type: object
+ *       properties:
+ *         content:
  *           type: string
- *           format: date-time
- *           example: "2024-08-18T00:00:00Z"
- * paths:
- *   /products:
- *     post:
- *       summary: Cria um novo produto
- *       description: Adiciona um novo produto ao banco de dados.
- *       requestBody:
- *         description: Dados do novo produto
- *         required: true
+ *           description: URL ou caminho da imagem do produto
+ *         enabled:
+ *           type: boolean
+ *           description: Indica se a imagem do produto está habilitada
+ *   securitySchemes:
+ *     bearerAuth:
+ *       type: http
+ *       scheme: bearer
+ *       bearerFormat: JWT
+ * 
+ * /products:
+ *   get:
+ *     summary: Obter todos os produtos
+ *     tags:
+ *       - Produtos
+ *     responses:
+ *       '200':
+ *         description: Lista de todos os produtos
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/Product'
- *       responses:
- *         201:
- *           description: Produto criado com sucesso
- *         400:
- *           description: Dados inválidos ou produto já cadastrado
- *     get:
- *       summary: Obtém todos os produtos
- *       description: Retorna uma lista de todos os produtos.
- *       responses:
- *         200:
- *           description: Lista de produtos
- *           content:
- *             application/json:
- *               schema:
- *                 type: array
- *                 items:
- *                   $ref: '#/components/schemas/Product'
- *   /products/{id}:
- *     get:
- *       summary: Obtém um produto por ID
- *       description: Retorna detalhes de um produto específico.
- *       parameters:
- *         - in: path
- *           name: id
- *           required: true
- *           schema:
- *             type: integer
- *       responses:
- *         200:
- *           description: Detalhes do produto
- *           content:
- *             application/json:
- *               schema:
+ *               type: array
+ *               items:
  *                 $ref: '#/components/schemas/Product'
- *         404:
- *           description: Produto não encontrado
- *     put:
- *       summary: Atualiza um produto por ID
- *       description: Atualiza as informações de um produto específico.
- *       parameters:
- *         - in: path
- *           name: id
- *           required: true
+ *   post:
+ *     summary: Criar um novo produto
+ *     tags:
+ *       - Produtos
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       content:
+ *         application/json:
  *           schema:
- *             type: integer
- *       requestBody:
- *         description: Dados para atualizar o produto
- *         required: true
+ *             $ref: '#/components/schemas/Product'
+ *     responses:
+ *       '201':
+ *         description: Produto criado com sucesso
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Product'
- *       responses:
- *         200:
- *           description: Produto atualizado com sucesso
- *         400:
- *           description: Dados inválidos
- *         404:
- *           description: Produto não encontrado
- *     delete:
- *       summary: Deleta um produto por ID
- *       description: Remove um produto do banco de dados.
- *       parameters:
- *         - in: path
- *           name: id
- *           required: true
+ * 
+ * /products/{id}:
+ *   get:
+ *     summary: Obter um produto por ID
+ *     tags:
+ *       - Produtos
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: integer
+ *         required: true
+ *         description: ID do produto
+ *     responses:
+ *       '200':
+ *         description: Dados de um produto
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Product'
+ *   put:
+ *     summary: Atualizar um produto por ID
+ *     tags:
+ *       - Produtos
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: integer
+ *         required: true
+ *         description: ID do produto
+ *     requestBody:
+ *       content:
+ *         application/json:
  *           schema:
- *             type: integer
- *       responses:
- *         200:
- *           description: Produto deletado com sucesso
- *         404:
- *           description: Produto não encontrado
+ *             $ref: '#/components/schemas/Product'
+ *     responses:
+ *       '200':
+ *         description: Produto atualizado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Product'
+ *     security:
+ *       - bearerAuth: []
+ *   delete:
+ *     summary: Deletar um produto por ID
+ *     tags:
+ *       - Produtos
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: integer
+ *         required: true
+ *         description: ID do produto
+ *     responses:
+ *       '204':
+ *         description: Produto deletado com sucesso
+ *     security:
+ *       - bearerAuth: []
  */
 
 const express = require('express');

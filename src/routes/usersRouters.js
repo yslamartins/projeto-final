@@ -131,6 +131,38 @@
  *         description: Usuário não encontrado
  */
 
+/**
+ * @openapi
+ * /users/password/{id}:
+ *   put:
+ *     summary: Atualiza a senha de um usuário por ID
+ *     description: Atualiza a senha de um usuário específico.
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     requestBody:
+ *       description: Dados para atualizar a senha do usuário
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               password:
+ *                 type: string
+ *                 example: newsecurepassword123
+ *     responses:
+ *       200:
+ *         description: Senha atualizada com sucesso
+ *       400:
+ *         description: Dados inválidos
+ *       404:
+ *         description: Usuário não encontrado
+ */
+
 const express = require('express');
 const router = express.Router();
 
