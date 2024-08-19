@@ -61,6 +61,7 @@ Para acessar o Swagger da aplicação basta ir para a rotas
 
 ```url
 localhost:3000/api-docs
+´´´
 
 ## Colaboradores
 
