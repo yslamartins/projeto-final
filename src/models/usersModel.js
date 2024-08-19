@@ -11,9 +11,7 @@ async function insertUserModel(firstname, surname, email, password) {
 }
 
 async function getAllUsers() {
-  const result = await connection.query(
-    'SELECT id, firstname, surname, email, password FROM users',
-  );
+  const result = await connection.query('SELECT * FROM users');
   return result.rows;
 }
 

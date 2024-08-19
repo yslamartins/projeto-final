@@ -34,7 +34,7 @@ async function updateUser(req, res) {
   const data = req.body;
 
   await userModel.updateUserByIdModel(id, data);
-  return res.status(201).send('Usuário inserido com sucesso');
+  return res.status(201).send('Usuário atualizado com sucesso');
 }
 
 async function updatePassword(req, res) {
