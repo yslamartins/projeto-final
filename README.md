@@ -2,7 +2,7 @@
 
 # Tech Products E-commerce APIREST
 
-Este repositório contém a API para um e-commerce voltado para a venda de produtos de tecnologia. A API foi desenvolvida utilizando Node.js, Express, PostgreSQL e MongoDB.
+Este repositório contém a API para um e-commerce voltado para a venda de produtos de tecnologia. A API foi desenvolvida utilizando Node.js, Express, PostgreSQL.
 
 ## Índice
 
@@ -31,10 +31,11 @@ A API permite a gestão de usuários, categorias e produtos voltados para um e-c
 - _Swagger_: Ferramenta para documentação da API.
 - _JWT (JSON Web Tokens)_: Utilizado para autenticação e segurança.
 - _Tembo.io_: Armazenamento em nuvem do banco de dados
+- bcrypt: Utilizado para a criptografia de senhas.
 
 ## Funcionalidades
 
-- Cadastro, autenticação e gerenciamento de usuários.
+- Cadastro, autenticação e gerenciamento de usuários com senhas criptografadas usando bcrypt.
 - Gestão de categorias de produtos.
 - CRUD completo para produtos tecnológicos.
 - Documentação automática das rotas via Swagger.
