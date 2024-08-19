@@ -11,14 +11,9 @@ function validateId(req, res, next) {
 function validateProduct(req, res, next) {
   const { name, price, description, stock, categorie_id, images } = req.body;
   
-  if (!name || !price || typeof stock !== 'number' || typeof categorie_id !== 'number') {
+  if (!name || !price || !image || !description || typeof stock !== 'number' || typeof categorie_id !== 'number') {
     return res.status(400).json({ error: 'Campos obrigatórios ausentes ou inválidos' });
   }
-
-  if (images && !Array.isArray(images)) {
-    return res.status(400).json({ error: 'O campo images deve ser um array' });
-  }
-
   next();
 }
 
