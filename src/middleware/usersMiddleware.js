@@ -32,6 +32,8 @@ async function middlewareUpdateUser(req, res, next) {
   const { id } = req.params;
   const data = req.body;
   const hasUser = await usersModel.getUserByIdModel(id);
+  const doesExistUser = await usersModel.getUserByEmailModel(data.email);
+  if (doesExistUser) return res.status(400).send('Email inválido');
 
   if (!hasUser) return res.status(400).send('User não encontrado');
 
