@@ -150,25 +150,37 @@ const {
   validateTokenMiddleware,
   isAdminValidateMiddleware,
 } = require('../middleware/validateMiddleware');
+const {
+  validateId,
+  validateProduct,
+} = require('../middleware/productsMiddleware');
 
 router.get('/products', productsController.getAllProducts);
-router.get('/products/:id', productsController.getProductById);
+
+router.get('/products/:id', validateId, productsController.getProductById);
+
 router.post(
   '/products',
   validateTokenMiddleware,
   isAdminValidateMiddleware,
+  validateProduct,
   productsController.createProduct,
 );
+
 router.put(
   '/products/:id',
   validateTokenMiddleware,
   isAdminValidateMiddleware,
+  validateId,
+  validateProduct,
   productsController.updateProduct,
 );
+
 router.delete(
   '/products/:id',
   validateTokenMiddleware,
   isAdminValidateMiddleware,
+  validateId,
   productsController.deleteProduct,
 );
 
