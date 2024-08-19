@@ -129,11 +129,30 @@
 const express = require('express');
 const router = express.Router();
 const productsController = require('../controllers/ProductsController');
+const {
+  validateTokenMiddleware,
+  isAdminValidateMiddleware,
+} = require('../middleware/validateMiddleware');
 
 router.get('/products', productsController.getAllProducts);
 router.get('/products/:id', productsController.getProductById);
-router.post('/products', productsController.createProduct);
-router.put('/products/:id', productsController.updateProduct);
-router.delete('/products/:id', productsController.deleteProduct);
+router.post(
+  '/products',
+  validateTokenMiddleware,
+  isAdminValidateMiddleware,
+  productsController.createProduct,
+);
+router.put(
+  '/products/:id',
+  validateTokenMiddleware,
+  isAdminValidateMiddleware,
+  productsController.updateProduct,
+);
+router.delete(
+  '/products/:id',
+  validateTokenMiddleware,
+  isAdminValidateMiddleware,
+  productsController.deleteProduct,
+);
 
 module.exports = router;
