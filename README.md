@@ -69,7 +69,3 @@ localhost:3000/api-docs
 - Emmanuel Cordeiro - [Github](https://github.com/manuzx) [LinkedIn](https://www.linkedin.com/in/emmanuel-cordeiro-653a132a7?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)
 - Ezequias de Oliveira - [Github](https://github.com/Ez3qu14s) [LinkedIn](https://www.linkedin.com/in/ezequias-de-oliveira-bernardo-2b216420b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app&original_referer=https%3A%2F%2Fgithub.com%2FEz3qu14s%2FDigital-Store%3Ftab%3Dreadme-ov-file)
 - Ysla Martins - [Github](https://github.com/yslamartins) [LinkedIn](https://www.linkedin.com/in/ysla-martins-dev)
-
-```
-
-```
