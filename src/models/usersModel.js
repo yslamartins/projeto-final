@@ -27,7 +27,7 @@ async function getUserByIdModel(id) {
 
 async function getUserByEmailModel(email) {
   const result = await connection.query(
-    `SELECT id, firstname, surname, email FROM users WHERE email = $1`,
+    `SELECT * FROM users WHERE email = $1`,
     [email],
   );
   return result.rows[0];
