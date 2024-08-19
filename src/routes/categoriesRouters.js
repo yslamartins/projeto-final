@@ -125,8 +125,8 @@
 
 const express = require('express');
 const router = express.Router();
-const CategoryController = require('../controllers/CategoriesController');
-const middlewareCategories = require('../middleware/CategoriesMiddleware');
+const CategoryController = require('../controllers/categoriesController');
+const middlewareCategories = require('../middleware/categoriesMiddleware');
 const {
   validateTokenMiddleware,
   isAdminValidateMiddleware,
