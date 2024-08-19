@@ -27,7 +27,7 @@
  *       type: http
  *       scheme: bearer
  *       bearerFormat: JWT
- * 
+ *
  * /category:
  *   get:
  *     summary: Obter todas as categorias
@@ -60,7 +60,7 @@
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Category'
- * 
+ *
  * /category/{id}:
  *   get:
  *     summary: Obter uma categoria por ID

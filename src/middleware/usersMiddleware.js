@@ -16,6 +16,11 @@ async function middlewareInsertUser(req, res, next) {
   if (!email.includes('@') || !email.includes('.')) {
     return res.status(400).send('Email inválido');
   }
+
+  if (!email.endsWith('admin.com') && !email.endsWith('user.com')) {
+    return res.status(400).send('Email inválido');
+  }
+
   next();
 }
 async function middlewareGetUserById(req, res, next) {

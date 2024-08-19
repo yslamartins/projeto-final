@@ -168,6 +168,10 @@ const router = express.Router();
 
 const usersController = require('../controllers/usersController');
 const usersMiddleware = require('../middleware/usersMiddleware');
+const {
+  validateTokenMiddleware,
+  isAdminValidateMiddleware,
+} = require('../middleware/validateMiddleware');
 
 router.post(
   '/users',
@@ -175,28 +179,39 @@ router.post(
   usersController.createUser,
 );
 
-router.get('/users', usersController.getAllUsers);
+router.get(
+  '/users',
+  validateTokenMiddleware,
+  isAdminValidateMiddleware,
+  usersController.getAllUsers,
+);
 
 router.get(
   '/users/:id',
+  validateTokenMiddleware,
+  isAdminValidateMiddleware,
   usersMiddleware.middlewareGetUserById,
   usersController.getUserById,
 );
 
 router.put(
   '/users/:id',
+  validateTokenMiddleware,
   usersMiddleware.middlewareUpdateUser,
   usersController.updateUser,
 );
 
 router.put(
   '/users/password/:id',
+  validateTokenMiddleware,
   usersMiddleware.middlewareUpdatePassword,
   usersController.updatePassword,
 );
 
 router.delete(
   '/users/:id',
+  validateTokenMiddleware,
+  isAdminValidateMiddleware,
   usersMiddleware.middlewareDeleteUser,
   usersController.deleteUser,
 );

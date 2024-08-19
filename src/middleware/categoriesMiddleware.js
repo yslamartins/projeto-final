@@ -14,7 +14,7 @@ async function middlewareGetCategoryById(req, res, next) {
 async function middlewareInsertCategory(req, res, next) {
   const { name, enabled } = req.body;
 
-  if (!name || !enabled) {
+  if (!name || typeof enabled != 'boolean') {
     return res.status(400).send('Dados da categoria incompletos');
   }
 
