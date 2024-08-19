@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const { swaggerUi, swaggerSpec } = require('../swagger');
 
-const productsRoutes = require('./routes/ProductsRoutes');
+const productsRoutes = require('./routes/productsRoutes');
 const categoriesRoutes = require('./routes/categoriesRouters');
 const router_users = require('./routes/usersRouters');
 const loginRouter = require('./routes/loginRouter');
