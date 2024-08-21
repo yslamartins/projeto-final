@@ -74,6 +74,16 @@ async function deleteCategoryModel(id) {
   return;
 }
 
+async function hasProducts(id) {
+  const result = await connection.query(
+    `
+    SELECT COUNT(*) FROM products WHERE categorie_id = $1
+    `,
+    [id],
+  );
+  return parseInt(result.rows[0].count, 10) > 0;
+}
+
 module.exports = {
   getAllCategories,
   getCategoryById,
@@ -81,4 +91,5 @@ module.exports = {
   insertCategoryModel,
   updateCategoryModel,
   deleteCategoryModel,
+  hasProducts,
 };

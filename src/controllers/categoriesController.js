@@ -33,9 +33,15 @@ async function updateCategoryProperty(req, res) {
 async function deleteCategory(req, res) {
   const { id } = req.params;
 
+  const hasProducts = await categoriasModel.hasProducts(id);
+  
+  if (hasProducts) {
+    return res.status(400).send('Não é possível deletar a categoria, pois há produtos associados.');
+  }
+
   await categoriasModel.deleteCategoryModel(id);
 
-  return res.send('Categorias deletado com sucesso');
+  return res.send('Categoria deletada com sucesso');
 }
 
 module.exports = {
